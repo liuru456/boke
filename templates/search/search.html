@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+
+{% block title %}搜索结果页面{% endblock %}
+
+{% block left %}
+    <div id="main">
+            <br><br>
+            <div class="archives">
+                {% if query %}
+
+
+                    {% for p in page.object_list %}
+                        <article class="archive-article archive-type-post">
+                          <div class="archive-article-inner">
+                            <header class="archive-article-header">
+                            <a class="archive-article-date" href="http://127.0.0.1:8000/category/1#">
+                                 <time>{{ p.object.created|date:'Y-m' }}</time>
+                            </a>
+
+                             <h1 itemprop="name">
+                                  <a class="archive-article-title" href="/post/{{ p.object.id }}" target="_blank">{{ p.object.title }}</a>
+                             </h1>
+                             </header>
+                          </div>
+                        </article>
+
+                        {% empty %}
+
+                        无记录
+                    {% endfor %}
+
+                {% endif %}
+
+            </div>
+    </div>
+{% endblock %}
